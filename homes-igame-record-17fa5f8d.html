@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 稳定入口</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f3f4f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2d2f33;
+      line-height: 1.6;
+      padding: 0 1.5rem 3rem;
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* hero 区 */
+    .hero {
+      padding: 3.5rem 0 2.5rem;
+      text-align: center;
+      border-bottom: 1px solid #e3e6ed;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #1e1f23;
+    }
+    .hero h1 span {
+      background: #eef0f5;
+      padding: 0 0.3em;
+      border-radius: 4px;
+    }
+    .hero p {
+      margin-top: 1rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #4b4e57;
+      font-size: 1.05rem;
+    }
+
+    /* 卡片通用设计 */
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid #e6e9f0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.04);
+      padding: 2rem 2.2rem;
+      transition: box-shadow 0.2s ease;
+    }
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    /* 优势区 — 三列网格 */
+    .advantages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem 0 2.5rem;
+    }
+    .advantages .card {
+      padding: 1.8rem 1.6rem;
+    }
+    .advantages h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: #1e2025;
+    }
+    .advantages p {
+      font-size: 0.95rem;
+      color: #50545e;
+    }
+
+    /* 说明区 — 两列布局 */
+    .explain {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+    .explain .card {
+      flex: 1 1 280px;
+    }
+    .explain h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #1f2127;
+    }
+    .explain p {
+      margin-bottom: 0.8rem;
+    }
+    .explain .highlight {
+      background: #f7f9fc;
+      padding: 0.8rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+      font-size: 0.9rem;
+      border: 1px solid #e1e6ef;
+      margin-top: 0.4rem;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      margin: 2rem 0 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .faq-item {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #e5e9f1;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      padding: 1.4rem 1.6rem;
+    }
+    .faq-item .q {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      color: #1a1c22;
+    }
+    .faq-item .a {
+      font-size: 0.92rem;
+      color: #595d68;
+    }
+
+    /* 底部链接区 */
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1.8rem 0 0.8rem;
+      border-top: 1px solid #dfe2ec;
+      margin-top: 1rem;
+    }
+    .footer-links .note {
+      color: #5c606b;
+      font-size: 0.9rem;
+      max-width: 400px;
+    }
+    .footer-links .link-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.8rem;
+      align-items: center;
+    }
+    .footer-links a {
+      color: #2e323d;
+      text-decoration: none;
+      border-bottom: 1px dotted #b4bac9;
+      padding-bottom: 1px;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+    .footer-links a:hover {
+      border-bottom: 1px solid #2e323d;
+    }
+
+    .tagline {
+      margin: 3rem 0 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6f7380;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 600px) {
+      body { padding: 0 1rem 2rem; }
+      .hero h1 { font-size: 2rem; }
+      .card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- hero 区 -->
+    <div class="hero">
+      <h1>关于 <span>爱游戏</span></h1>
+      <p>一个保持简洁、长期稳定的内容入口。没有冗余干扰，只有清晰路径。从了解它到习惯它，中间只隔一次「认出」。</p>
+    </div>
+
+    <!-- 优势区 三卡片 -->
+    <div class="advantages">
+      <div class="card">
+        <h3>· 入口稳定</h3>
+        <p>不依赖短期渠道，域名与路径长期有效。你记住的链接就是那一个，不必每次重新搜索确认。</p>
+      </div>
+      <div class="card">
+        <h3>· 页面干净</h3>
+        <p>结构克制，排版留白。无论是手机还是桌面，加载后一眼就能看到核心内容，不考验耐心。</p>
+      </div>
+      <div class="card">
+        <h3>· 指向明确</h3>
+        <p>每个区块都有自己的任务，不堆砌无关模块。你想找的东西，通常在它应该在的位置。</p>
+      </div>
+    </div>
+
+    <!-- 说明区 两段叙述 -->
+    <div class="explain">
+      <div class="card">
+        <h2>为什么需要稳定入口</h2>
+        <p>很多人都有过这种经验：某天想登录一个熟悉的服务，却忘了确切地址，只好在搜索引擎里重新打捞——结果点进几个仿冒或过时的页面，花掉好几分钟。</p>
+        <p><a href="https://homes-igame.com">爱游戏</a>希望提供一个可以记住的锚点。不频繁更换域名，不突然改变布局。你存下来的书签，下次打开时还能用，而且界面不会有陌生感。</p>
+        <span class="highlight">⚡ 一个入口，反复使用</span>
+      </div>
+      <div class="card">
+        <h2>页面说明与角色</h2>
+        <p>这个页面扮演的是「介绍与引荐」的角色。它不试图取代任何功能页面，反而更像一张简单的说明书，帮你判断这里是否匹配你的需求。</p>
+        <p>你可以把 <a href="https://homes-igame.com">爱游戏</a> 看作一块安静的路牌：它不喊话，不催促，只是站在那儿，告诉你方向。剩下的，由你自己决定。</p>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+      <div class="faq-item">
+        <div class="q">Q：这个页面和爱游戏是什么关系？</div>
+        <div class="a">它是「爱游戏」的说明页，帮助你快速了解站点定位与使用方式，同时提供稳定的返回入口。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Q：为什么强调“稳定入口”？</div>
+        <div class="a">因为很多网站会频繁变更地址或改版，造成书签失效。我们保持域名和结构一致，降低记忆负担。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Q：可以直接从这里访问爱游戏吗？</div>
+        <div class="a">当然。页面中多次出现 <a href="https://homes-igame.com">爱游戏</a> 链接，点击即可到达主站。</div>
+      </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="footer-links">
+      <div class="note">
+        <span>没有多余的导航，只有必要的指向。</span>
+      </div>
+      <div class="link-group">
+        <a href="https://homes-igame.com">爱游戏</a>
+        <span style="color:#b0b5c2;">·</span>
+        <a href="https://homes-igame.com">爱游戏</a>
+      </div>
+    </div>
+
+    <div class="tagline">
+      — 一次认知，反复使用 —
+    </div>
+
+  </div>
+</body>
+</html>
