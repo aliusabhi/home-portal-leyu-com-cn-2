@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>再次遇见 · 优直播知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            background-color: #fbf8f2;
+            color: #2e2a26;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 980px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.03), 0 4px 16px rgba(0, 0, 0, 0.02);
+            padding: 2.5rem 2rem 3.5rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 0.8rem;
+            }
+            .page {
+                padding: 1.8rem 1.2rem 2.5rem;
+                border-radius: 20px;
+            }
+        }
+
+        /* 目录感布局 */
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 2.2rem 0 2rem;
+        }
+
+        .toc-item {
+            background: #f7f3ec;
+            border-radius: 16px;
+            padding: 1.2rem 1rem 0.9rem;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 0 #e4ddd0;
+        }
+
+        .toc-item:hover {
+            background: #efe9df;
+            box-shadow: 0 4px 0 #ccc3b2;
+        }
+
+        .toc-item a {
+            text-decoration: none;
+            color: #3d352c;
+            font-weight: 500;
+            display: block;
+        }
+
+        .toc-item .toc-num {
+            font-size: 0.75rem;
+            letter-spacing: 0.03em;
+            color: #8f8375;
+            margin-bottom: 0.1rem;
+        }
+
+        .toc-item .toc-title {
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .toc-item .toc-brief {
+            font-size: 0.8rem;
+            color: #6a6155;
+            margin-top: 0.25rem;
+            border-left: 2px solid #d5cbbc;
+            padding-left: 0.5rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #2b2621;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #7a6f60;
+            margin-bottom: 1.8rem;
+            border-bottom: 1px solid #e6dfd3;
+            padding-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 520;
+            margin: 2rem 0 0.8rem;
+            color: #3d352b;
+            letter-spacing: 0.01em;
+        }
+
+        .section-title::before {
+            content: "▍";
+            margin-right: 0.2rem;
+            color: #b3a48f;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        .intro-block {
+            background: #f9f5ed;
+            padding: 1.4rem 1.6rem;
+            border-radius: 18px;
+            margin: 1.8rem 0;
+            font-size: 0.98rem;
+        }
+
+        .intro-block strong {
+            color: #3f352a;
+        }
+
+        blockquote {
+            background: #f3ede3;
+            border-left: 5px solid #cbbca5;
+            padding: 0.8rem 1.4rem;
+            margin: 1.6rem 0;
+            border-radius: 0 14px 14px 0;
+            color: #3e372e;
+            font-style: normal;
+        }
+
+        blockquote p {
+            margin: 0.2rem 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.8rem 0;
+        }
+
+        @media (max-width: 520px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: #f7f3eb;
+            padding: 1.2rem 1.2rem 1.1rem;
+            border-radius: 16px;
+            border: 1px solid #ece4d6;
+        }
+
+        .info-card h3 {
+            font-size: 1rem;
+            font-weight: 550;
+            color: #3b3229;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-card p {
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+            color: #564e42;
+        }
+
+        .tip-box {
+            background: #f1ede5;
+            border-radius: 18px;
+            padding: 1rem 1.4rem;
+            margin: 2rem 0 1.2rem;
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+            border: 1px solid #e0d7c6;
+        }
+
+        .tip-box .tip-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            flex-shrink: 0;
+            color: #8b7d6a;
+        }
+
+        .tip-box p {
+            margin: 0;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 1rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e7dfd0;
+            padding: 0.9rem 0;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 510;
+            color: #3f352b;
+        }
+
+        .faq-a {
+            color: #5e5548;
+            font-size: 0.95rem;
+            margin-top: 0.15rem;
+        }
+
+        .footer-note {
+            border-top: 1px solid #e2d9ca;
+            margin-top: 2.8rem;
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #7c7162;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-note a {
+            color: #4f4539;
+            text-decoration: none;
+            border-bottom: 1px dotted #b3a692;
+        }
+
+        .footer-note a:hover {
+            border-bottom: 1px solid #4f4539;
+        }
+
+        .btn-mute {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #d5cbbc;
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #5d5242;
+            cursor: default;
+            margin-top: 0.2rem;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .inline-link {
+            color: #3b3229;
+            text-decoration: none;
+            border-bottom: 1px solid #cbbca5;
+            transition: border 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom: 2px solid #7b6e5b;
+        }
+
+        .label-badge {
+            display: inline-block;
+            background: #e5ddcf;
+            padding: 0.1rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #3b3229;
+            margin-left: 0.3rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 标题区 -->
+    <h1>再次遇见 · 优直播</h1>
+    <div class="subhead">知识库入口 · 收藏夹里的老朋友</div>
+
+    <!-- 目录感网格 -->
+    <div class="toc-grid">
+        <div class="toc-item">
+            <div class="toc-num">01 说明</div>
+            <div class="toc-title">关于这个站点</div>
+            <div class="toc-brief">为何值得再次打开</div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-num">02 提示</div>
+            <div class="toc-title">使用备忘</div>
+            <div class="toc-brief">收藏 · 回访 · 持续关注</div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-num">03 信息</div>
+            <div class="toc-title">相关参考</div>
+            <div class="toc-brief">常见问题与背景</div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-num">04 入口</div>
+            <div class="toc-title">回到主站</div>
+            <div class="toc-brief">直接前往 <a href="https://official-site-youzhibo.com" style="text-decoration: underline; color: #3f352b;">优直播</a></div>
+        </div>
+    </div>
+
+    <!-- 说明区：从再次访问的角度切入 -->
+    <div class="section-title">说明 · 为什么又回来了</div>
+    <div class="intro-block">
+        <p>或许你曾在某个时刻收藏过 <a href="https://official-site-youzhibo.com" class="inline-link">优直播</a>，之后便淹没在书签栏的深处。这个页面是一份轻量的知识库入口，用来重新建立联系——不需要重新搜索，不需要再次猜测网址。把这里当作一个安静的索引，每次回访都能更快找到自己关心的内容。</p>
+        <p>网站本身保持简洁，不堆砌弹窗，不索取权限。如果你习惯把有价值的站点留在手边，不妨将当前页加入浏览器收藏夹，或者记下名字，下次直接输入「优直播」回到这里。</p>
+    </div>
+
+    <!-- 提示区：收藏、关注、持续回访 -->
+    <div class="section-title">提示 · 如何保持联系</div>
+
+    <div class="tip-box">
+        <div class="tip-icon">📌</div>
+        <div><p><strong>收藏提示：</strong> 把本页面加入书签是最直接的方式。多数浏览器支持文件夹分类，你可以新建一个名为“常用工具”或“直播相关”的目录，把 <a href="https://official-site-youzhibo.com" class="inline-link">优直播</a> 放进去。下次想找的时候，不必回忆具体网址。</p></div>
+    </div>
+
+    <div class="tip-box">
+        <div class="tip-icon">🔄</div>
+        <div><p><strong>持续关注：</strong> 网站内容可能会根据用户反馈逐步完善，间隔一段时间回访，或许会发现新的说明或调整。不需要订阅，也不需要留下邮箱，保持一种“想起来就来看看”的节奏就好。</p></div>
+    </div>
+
+    <div class="tip-box">
+        <div class="tip-icon">📋</div>
+        <div><p><strong>备忘：</strong> 如果你习惯使用笔记应用（Notion、备忘录、Obsidian 等），可以记下一行文字：“直播知识索引 —— <a href="https://official-site-youzhibo.com" class="inline-link">优直播</a>”。这样即便书签丢失，也能通过搜索笔记找回。</p></div>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="section-title">相关信息</div>
+    <div class="info-grid">
+        <div class="info-card">
+            <h3>站点定位</h3>
+            <p>一个围绕直播场景的信息整合入口，侧重知识索引与资源梳理。非商业推广，无强制注册。</p>
+        </div>
+        <div class="info-card">
+            <h3>常见场景</h3>
+            <p>内容参考、工具查找、功能说明回顾。适合偶尔需要查阅直播相关知识的使用者。</p>
+        </div>
+        <div class="info-card">
+            <h3>使用建议</h3>
+            <p>搭配浏览器书签栏使用更高效。如果需要离线参考，可以截图或保存页面为 PDF。</p>
+        </div>
+        <div class="info-card">
+            <h3>更新节奏</h3>
+            <p>不定期优化内容结构，没有固定周期。改动幅度通常较小，但会确保链接有效。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <div class="section-title">FAQ 摘要</div>
+
+        <div class="faq-item">
+            <div class="faq-q">Q：这个页面和主站是什么关系？</div>
+            <div class="faq-a">A：本页是介绍与索引页，主站地址为 <a href="https://official-site-youzhibo.com" class="inline-link">优直播</a>，两者内容互补。你可以把这里当作一个温和的接待厅。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q：是否需要注册或下载？</div>
+            <div class="faq-a">A：不需要。主站和本页面都不要求注册，也没有客户端安装步骤。打开即用。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q：我忘了之前从哪里找到的，怎么办？</div>
+            <div class="faq-a">A：直接搜索「优直播 知识库」或「youzhibo 介绍」通常可以重新定位。也可以收藏本页作为固定路标。</div>
+        </div>
+    </div>
+
+    <!-- 引用块（温和收尾） -->
+    <blockquote>
+        <p>网页会变迁，书签会积灰，但一份轻量的知识索引总能在需要时拉你一把。<br>—— 来自某个也曾反复寻找入口的人</p>
+    </blockquote>
+
+    <!-- 底部说明 -->
+    <div class="footer-note">
+        <p>你可以随时回到 <a href="https://official-site-youzhibo.com">优直播</a> · 无需登录，无需等待</p>
+        <p style="margin-top: 0.3rem; font-size: 0.75rem; color: #958a7a;">知识库入口 · 记录于一个安静的午后</p>
+    </div>
+
+</div>
+</body>
+</html>
