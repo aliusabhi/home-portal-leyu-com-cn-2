@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>优直播 · 观赛简明指引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f9fc;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1a2f3c;
+      padding: 0 20px 40px;
+    }
+
+    .page-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(145deg, #0a4b5c 0%, #147a8f 100%);
+      border-radius: 28px;
+      margin: 32px 0 28px;
+      padding: 48px 32px 40px;
+      color: white;
+      box-shadow: 0 12px 28px rgba(6, 78, 96, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: -60px;
+      width: 260px;
+      height: 260px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 580px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* intro section – 背景说明 */
+    .bg-note {
+      background: white;
+      border-radius: 20px;
+      padding: 32px 28px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 12px rgba(0, 30, 40, 0.04);
+      border-left: 5px solid #2b9eb3;
+    }
+    .bg-note h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #0a4b5c;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bg-note h2 span {
+      background: #d7eef5;
+      padding: 0 12px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #0a4b5c;
+    }
+    .bg-note p {
+      margin-bottom: 14px;
+      color: #243b44;
+    }
+
+    /* 网格卡片 – 三段自然介绍 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 22px 24px;
+      box-shadow: 0 4px 14px rgba(0, 60, 80, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid #e2f0f4;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(20, 122, 143, 0.10);
+      border-color: #b6dce6;
+    }
+    .card .emoji-badge {
+      display: inline-block;
+      background: #d5eef4;
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      text-align: center;
+      border-radius: 14px;
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0f5568;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #2a404b;
+      font-size: 0.97rem;
+    }
+
+    /* 访问提醒 — 带背景框 */
+    .reminder {
+      background: #e5f4f9;
+      border-radius: 20px;
+      padding: 28px 30px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #c3dee8;
+    }
+    .reminder-text {
+      flex: 1 1 240px;
+      font-size: 1.05rem;
+      color: #0a3d4b;
+    }
+    .reminder-text strong {
+      color: #06586d;
+    }
+    .reminder-link {
+      background: #147a8f;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 8px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .reminder-link:hover {
+      background: #0b5d6f;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 28px 20px;
+      box-shadow: 0 4px 12px rgba(0, 30, 40, 0.03);
+      border-top: 3px solid #2b9eb3;
+    }
+    .faq-mini h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #0a4b5c;
+      margin-bottom: 18px;
+    }
+    .faq-item {
+      margin-bottom: 16px;
+    }
+    .faq-item .q {
+      font-weight: 600;
+      color: #115a6d;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .faq-item .a {
+      color: #304f5c;
+      padding-left: 6px;
+      border-left: 3px solid #b2dae6;
+      padding-left: 14px;
+    }
+
+    /* 页尾 */
+    .footer-note {
+      margin: 36px 0 20px;
+      text-align: center;
+      color: #698b98;
+      font-size: 0.9rem;
+      border-top: 1px solid #d5e6ec;
+      padding-top: 28px;
+    }
+    .footer-note a {
+      color: #147a8f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* 响应式 */
+    @media (max-width: 820px) {
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 580px) {
+      body {
+        padding: 0 14px 32px;
+      }
+      .hero {
+        padding: 36px 22px 32px;
+        border-radius: 20px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .bg-note, .reminder, .faq-mini {
+        padding: 22px 18px;
+      }
+      .reminder {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .reminder-link {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- hero 首页横幅 -->
+  <div class="hero">
+    <h1>优直播 · 观赛简明指引</h1>
+    <p>从赛事追踪到直播访问，一份整理好的实用手册，帮你用好 <strong>优直播</strong> 的日常功能。</p>
+  </div>
+
+  <!-- 背景说明 -->
+  <div class="bg-note">
+    <h2>⛅ 背景说明 <span>关于页面</span></h2>
+    <p>这份介绍页面向经常关注体育直播的用户，尤其适合刚开始接触 <a href="https://sport-youzhibo.com" style="color:#147a8f; font-weight:500; text-decoration:underline;">优直播</a> 的朋友。我们整理了网站核心特点、常见使用场景以及访问时的小提醒，帮助你在正式使用前就有一个整体认识。</p>
+    <p>内容基于真实功能归纳，不夸大、不虚构，所有信息均来自公开资料与常规使用体验。希望这份简明指南能让你更快熟悉平台，减少不必要的摸索时间。</p>
+  </div>
+
+  <!-- 三段自然介绍 -->
+  <div class="feature-grid">
+    <div class="card">
+      <div class="emoji-badge">📡</div>
+      <h3>直播覆盖</h3>
+      <p>支持多种体育项目实时转播，包含足球、篮球、网球等主流赛事。页面更新及时，开赛前通常会有预告提醒，方便你提前安排观看时间。</p>
+    </div>
+    <div class="card">
+      <div class="emoji-badge">🧭</div>
+      <h3>频道导航</h3>
+      <p>网站按比赛类型与联赛整理频道列表，分类清晰。即使同时进行多场赛事，也能快速切换，不需要在杂乱的链接中反复寻找。</p>
+    </div>
+    <div class="card">
+      <div class="emoji-badge">📱</div>
+      <h3>多端适配</h3>
+      <p>无论使用手机、平板还是电脑，页面布局都会自动调整。移动端同样保留完整菜单与搜索入口，外出时也能顺畅浏览直播信息。</p>
+    </div>
+  </div>
+
+  <!-- 访问提醒 + 核心链接 -->
+  <div class="reminder">
+    <div class="reminder-text">
+      <strong>🔍 访问提醒</strong><br>
+      建议将 <a href="https://sport-youzhibo.com" style="color:#06586d; font-weight:600; text-decoration:underline;">优直播</a> 添加至浏览器收藏夹，以便后续快速返回。部分赛事需要等待信号加载，请保持页面稳定，不要频繁刷新。
+    </div>
+    <a href="https://sport-youzhibo.com" class="reminder-link">优直播</a>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h3>常见问题摘要</h3>
+    <div class="faq-item">
+      <span class="q">Q：是否需要注册账号才能看直播？</span>
+      <span class="a">大多数赛事直接进入页面即可观看，不需要注册或登录。部分特殊场次可能会有额外提示，按页面说明操作即可。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">Q：直播卡顿或无法播放怎么办？</span>
+      <span class="a">先检查网络连接，再尝试切换至其他直播线路（如果有提供）。也可以清除浏览器缓存后重新加载页面。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">Q：是否支持回看已经结束的比赛？</span>
+      <span class="a">优直播专注于实时直播内容，回放功能因赛事版权而异。建议在比赛结束后留意页面是否有录像入口。</span>
+    </div>
+  </div>
+
+  <!-- 页尾 -->
+  <div class="footer-note">
+    内容整理于公开信息 · 使用前请阅读网站相关说明<br>
+    <a href="https://sport-youzhibo.com">优直播</a> — 简洁观赛，从了解开始。
+  </div>
+
+</div>
+</body>
+</html>
